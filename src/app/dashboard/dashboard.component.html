@@ -1,0 +1,58 @@
+<div class="container-fluid bg-light">
+    <div class="container bg-light">
+
+        <div class="row mt-4 " style="height: 500px;">
+
+            <div class="col"></div>
+            <div class="col-md-6 bg-white shadow">
+
+                <div class="card bg-warning mt-4">
+                    <h4 class="text-white ps-3 pt-2 pb-2">Notes :</h4>
+                </div>
+
+                <div class="shadow">
+                      <div class="input-group p-4">
+                        <input type="text" class="form-control" placeholder="Enter task " name="task" [(ngModel)]="newNoteValue">
+                        <button class="btn btn-outline-success" type="button" (click)="addNewNote()">+</button>
+                      </div>
+                </div>
+
+                 <h4 class="text-primary mt-4">Notes : </h4>
+
+                <div style="overflow-y: auto; height: 350px;">
+                    <div class="m-3" *ngFor="let note of noteList">
+                        <div class="p-2 shadow border" id="note" >
+                            <div class="input-group row ps-3" >
+                                <div class="card col-md-10 border-0"> {{note.noteName}} </div>
+                                <button class="btn btn-outline-primary col me-2" data-bs-toggle="modal"
+                                     type="button" data-bs-target="#exampleModal" (click)="selectNote(note)" >e</button>
+                                <div class="btn btn-outline-danger col" (click)="deleteNote(note)" >X</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Note</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group p-4">
+                                <input type="text" class="form-control" placeholder="Enter Note " name="note" [(ngModel)]="editedNoteValue">
+                                <button class="btn btn-outline-success" type="button" data-bs-dismiss="modal" (click)="updateNote()">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col"></div>
+
+        </div>
+
+    </div>
+</div>
